@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IPASME Rubio | Citas Médicas</title>
+    <meta name="description" content="Sistema de citas médicas de la Unidad Médica IPASME Rubio." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand-wrap">
+          <img class="brand-logo" src="/logo-ipasme.jpg" alt="Logo de IPASME Rubio" />
+          <div>
+            <strong>Unidad Médica</strong>
+            <span>Rubio</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#inicio">Inicio</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#especialidades">Especialidades</a>
+          <a href="#faq">Preguntas</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="nav-actions">
+          <button id="openBookingBtn" class="btn btn-primary small">Solicitar cita</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section id="inicio" class="hero">
+        <div class="container hero-content">
+          <div class="hero-copy">
+            <p class="eyebrow">Atención médica cercana y segura</p>
+            <h1>Tu salud merece un acceso claro y confiable.</h1>
+            <p id="institutionSummary">La Unidad Médica IPASME Rubio te acompaña con atención integral y programas de salud preventiva.</p>
+            <div class="hero-actions">
+              <button id="heroRequestBtn" class="btn btn-primary large">Solicitar cita médica</button>
+              <button id="showInfoBtn" class="btn btn-secondary large">Conoce más</button>
+            </div>
+            <ul class="hero-points">
+              <li>Atención institucional</li>
+              <li>Especialistas disponibles</li>
+              <li>Confirmación por correo</li>
+            </ul>
+          </div>
+          <div class="hero-card card">
+            <h3>Información institucional</h3>
+            <div class="info-line"><strong>Dirección:</strong><span id="addressInfo"></span></div>
+            <div class="info-line"><strong>Horario:</strong><span id="hoursInfo"></span></div>
+            <div class="info-line"><strong>Teléfono:</strong><span id="phoneInfo"></span></div>
+            <div class="info-line"><strong>Fax:</strong><span id="faxInfo"></span></div>
+            <a id="mapsLink" class="link-btn" href="#" target="_blank" rel="noreferrer">Ver mapa</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="container stats-grid">
+          <div class="card stat-card">
+            <strong id="specialtiesCount">0</strong>
+            <span>Especialidades</span>
+          </div>
+          <div class="card stat-card">
+            <strong id="doctorsCount">0</strong>
+            <span>Médicos activos</span>
+          </div>
+          <div class="card stat-card">
+            <strong id="appointmentsCount">0</strong>
+            <span>Citas registradas</span>
+          </div>
+          <div class="card stat-card">
+            <strong>24h</strong>
+            <span>Recordatorios</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicios" class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow alt">Qué ofrecemos</p>
+            <h2>Servicios y actividades institucionales</h2>
+          </div>
+          <div id="servicesGrid" class="cards-grid"></div>
+        </div>
+      </section>
+
+      <section id="especialidades" class="section accent-bg">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow alt">Especialidades</p>
+            <h2>Atención de salud orientada a la comunidad</h2>
+          </div>
+          <div id="specialtiesGrid" class="cards-grid"></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow alt">Nuestros profesionales</p>
+            <h2>Especialistas y personal de salud</h2>
+          </div>
+          <div id="doctorsGrid" class="cards-grid"></div>
+        </div>
+      </section>
+
+      <section id="faq" class="section accent-bg">
+        <div class="container two-column">
+          <div>
+            <p class="eyebrow alt">Información útil</p>
+            <h2>Requisitos para asistir a consulta</h2>
+            <ul id="requirementsList" class="check-list"></ul>
+          </div>
+          <div>
+            <p class="eyebrow alt">Preguntas frecuentes</p>
+            <div id="faqsList" class="faq-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="section-head">
+            <p class="eyebrow alt">Noticias y avisos</p>
+            <h2>Comunicados y campañas de salud</h2>
+          </div>
+          <div id="newsGrid" class="cards-grid"></div>
+        </div>
+      </section>
+
+      <section id="auth" class="section contact-section">
+        <div class="container auth-grid">
+          <div class="card auth-card">
+            <h3>Registro de beneficiario</h3>
+            <form id="registerForm">
+              <div class="two-fields">
+                <input type="text" name="firstName" placeholder="Nombres" required aria-label="Nombres" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑüÜ\s'-]+" />
+                <input type="text" name="lastName" placeholder="Apellidos" required aria-label="Apellidos" pattern="[A-Za-zÁÉÍÓÚáéíóúñÑüÜ\s'-]+" />
+              </div>
+              <div class="two-fields">
+                <input type="text" name="cedula" placeholder="Cédula" required aria-label="Cédula" inputmode="numeric" pattern="[0-9]{6,9}" />
+                <input type="email" name="email" placeholder="Correo electrónico" required aria-label="Correo electrónico" />
+              </div>
+              <div class="two-fields">
+                <input type="tel" name="phone" placeholder="Teléfono" required aria-label="Teléfono" inputmode="tel" pattern="[0-9+\s-]{7,15}" />
+                <input type="date" name="birthDate" required aria-label="Fecha de nacimiento" />
+              </div>
+              <div class="two-fields">
+                <select name="sex" required>
+                  <option value="">Sexo</option>
+                  <option value="Femenino">Femenino</option>
+                  <option value="Masculino">Masculino</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <select name="beneficiaryType" required>
+                  <option value="">Tipo de beneficiario</option>
+                  <option value="docente">Docente</option>
+                  <option value="administrativo">Personal administrativo</option>
+                  <option value="obrero">Obrero</option>
+                  <option value="familiar">Familiar</option>
+                  <option value="beneficiario">Beneficiario</option>
+                </select>
+              </div>
+              <div class="two-fields">
+                <input type="text" name="fileNumber" placeholder="Número de expediente / código IPASME" aria-label="Número de expediente" pattern="[A-Za-z0-9\-/ ]+" />
+                <input type="password" name="password" placeholder="Contraseña segura" required aria-label="Contraseña" />
+              </div>
+              <button type="submit" class="btn btn-primary">Crear cuenta</button>
+            </form>
+          </div>
+
+          <div class="card auth-card">
+            <h3>Iniciar sesión</h3>
+            <form id="loginForm">
+              <input type="email" id="loginEmail" placeholder="Correo electrónico" required />
+              <input type="password" id="loginPassword" placeholder="Contraseña" required />
+              <button type="submit" class="btn btn-primary">Ingresar</button>
+            </form>
+
+            <div class="verification-box">
+              <h4>Verificación de correo</h4>
+              <p>Si ya te registraste, ingresa el código enviado a tu correo para activar tu cuenta.</p>
+              <div class="two-fields small-gap">
+                <input type="text" id="verificationCode" placeholder="Código de verificación" />
+                <button id="verifyEmailBtn" class="btn btn-secondary">Verificar</button>
+              </div>
+            </div>
+
+            <div id="appointmentPanel" class="hidden">
+              <h3>Solicitud de cita</h3>
+              <form id="appointmentForm">
+                <select id="specialtySelect" required></select>
+                <select id="doctorSelect"></select>
+                <input type="date" id="appointmentDate" required />
+                <select id="turnoSelect" required>
+                  <option value="">Seleccione turno</option>
+                  <option value="mañana">Mañana</option>
+                  <option value="tarde">Tarde</option>
+                </select>
+                <select id="hourSelect" required>
+                  <option value="">Seleccione horario</option>
+                </select>
+                <textarea id="symptomInput" rows="3" placeholder="Motivo o síntoma principal" required aria-label="Motivo o síntoma principal" pattern="[A-Za-z0-9ÁÉÍÓÚáéíóúñÑüÜ\s.,;:-]+"></textarea>
+                <button type="submit" class="btn btn-primary">Confirmar cita</button>
+              </form>
+              <div id="userAppointments" class="mini-list"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer id="contacto" class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h4>IPASME Rubio</h4>
+          <p id="footerAddress"></p>
+        </div>
+        <div>
+          <h4>Contacto</h4>
+          <p id="footerPhone"></p>
+          <p id="footerFax"></p>
+        </div>
+        <div>
+          <h4>Horario</h4>
+          <p id="footerHours"></p>
+        </div>
+        <div>
+          <h4>Portal</h4>
+          <p><a href="/admin.html" class="link-btn">Acceso administrativo</a></p>
+        </div>
+      </div>
+    </footer>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

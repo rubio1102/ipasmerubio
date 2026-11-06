@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portal administrativo | IPASME Rubio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body { background: #f5f9ff; }
+      .portal-layout {
+        padding: 32px 0 80px;
+      }
+      .portal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 24px;
+      }
+      .portal-login { max-width: 520px; margin: 0 auto; }
+      .portal-grid { display: grid; gap: 24px; }
+      .admin-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+      .desktop-hidden { display: none; }
+      @media (max-width: 900px) {
+        .portal-header { flex-direction: column; align-items: flex-start; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="container nav">
+        <div class="brand-wrap">
+          <img class="brand-logo" src="/logo-ipasme.jpg" alt="Logo de IPASME Rubio" />
+          <div>
+            <strong>Portal</strong>
+            <span>Administrativo</span>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="/">Volver al sitio</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="portal-layout">
+      <div class="container portal-grid">
+        <div id="loginCard" class="card portal-login">
+          <h2>Acceso administrativo</h2>
+          <form id="adminLoginForm" class="admin-login-form">
+            <input type="text" id="adminUsername" placeholder="Usuario" required />
+            <input type="password" id="adminPassword" placeholder="Contraseña" required />
+            <button type="submit" class="btn btn-primary">Entrar</button>
+          </form>
+        </div>
+
+        <div id="adminDashboard" class="hidden admin-panel">
+          <div class="admin-toolbar">
+            <h2>Dashboard</h2>
+            <button id="logoutAdminBtn" class="btn btn-secondary">Cerrar sesión</button>
+          </div>
+
+          <div class="card">
+            <div id="dashboardStats" class="stat-mini-grid"></div>
+          </div>
+
+          <div class="card">
+            <h3>Contenido institucional</h3>
+            <form id="contentForm">
+              <input type="text" id="institutionName" placeholder="Nombre de la institución" />
+              <textarea id="institutionMission" rows="3" placeholder="Misión"></textarea>
+              <textarea id="institutionVision" rows="3" placeholder="Visión"></textarea>
+              <textarea id="institutionNotice" rows="3" placeholder="Aviso institucional"></textarea>
+              <button type="submit" class="btn btn-primary">Guardar</button>
+            </form>
+          </div>
+
+          <div class="card">
+            <h3>Especialidades</h3>
+            <form id="specialtyAdminForm" class="compact-form">
+              <input type="text" id="specialtyName" placeholder="Nombre de especialidad" />
+              <textarea id="specialtyDescription" rows="2" placeholder="Descripción"></textarea>
+              <button type="submit" class="btn btn-secondary">Guardar especialidad</button>
+            </form>
+            <div id="specialtyAdminList" class="list-box"></div>
+          </div>
+
+          <div class="card">
+            <h3>Médicos</h3>
+            <form id="doctorAdminForm" class="compact-form">
+              <input type="text" id="doctorName" placeholder="Nombre del médico" />
+              <select id="doctorSpecialtyField"></select>
+              <input type="text" id="doctorOffice" placeholder="Consultorio" />
+              <input type="number" id="doctorCapacity" placeholder="Cupo" value="8" />
+              <label><input type="checkbox" id="doctorMorning" checked /> Mañana</label>
+              <label><input type="checkbox" id="doctorAfternoon" checked /> Tarde</label>
+              <button type="submit" class="btn btn-secondary">Guardar médico</button>
+            </form>
+            <div id="doctorAdminList" class="list-box"></div>
+          </div>
+
+          <div class="card">
+            <h3>Citas</h3>
+            <div id="adminAppointmentsList" class="list-box"></div>
+          </div>
+
+          <div class="card">
+            <h3>Reportes</h3>
+            <div id="reportStats" class="mini-list"></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="/admin.js"></script>
+  </body>
+</html>
